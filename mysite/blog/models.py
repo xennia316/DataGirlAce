@@ -1,9 +1,9 @@
-from time import timezone
+from django.utils import timezone
 from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-class Post(models):
+class Post(models.Model):
 
     STATUS_CHOICES = (
         ('draft', 'Draft'),
@@ -20,6 +20,6 @@ class Post(models):
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
 
     class Meta:
-        ordering = ('-publish')
+        ordering = ('-publish',)
     def __str__(self):
         return self.title
